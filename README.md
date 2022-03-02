@@ -1,6 +1,6 @@
 # morsecode_interpreter
 
-A simple morsecode translator that works in command line.
+A simple morsecode translator that works in command line. The script determines automatically if the input is a plaintext that needs to be encoded or vice-versa.
 
 ## USAGE
 * To encode plaintext to morsecode or vice-versa type: 
