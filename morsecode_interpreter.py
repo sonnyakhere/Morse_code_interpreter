@@ -1,5 +1,5 @@
 
-
+#encryption dictionary
 dict_encrypt = {
 	"a":".-","b":"-...","c":"-.-.","d":"-..",
 	"e":".","f":"..-.","g":"--.","h":"....",
@@ -14,24 +14,26 @@ dict_encrypt = {
 	"'": ".----.","-": "-....-","/": "-..-.","\"":".-..-.",
 	"@":".--.-.","=":"-...-"," ": " ","\n": "\n"
 }
+
+#decrypton dictonary
 dict_decrypt = dict([(v, k) for k, v in dict_encrypt.items()])
 
-
+#encryption function
 def encrypt():
     translation = ""
     for x in txt:
-        translation += dict_encrypt.get(x) + " "
+        translation += dict_encrypt.get(x) + " "	#add single space after every character map
     print(translation)
     return
 
+#decryption function
 def decrypt():
-	global txt
 	translation = ""
 	txt = txt.split(" ")
 	for i, x in enumerate(txt):
-		if x == "" and txt[i + 1] == "":
+		if x == "" and txt[i + 1] == "":	#check for concuring whitespacces and interprete as single space
 			translation += " "
-		elif x == "" and txt[i + 1] != "":
+		elif x == "" and txt[i + 1] != "":	#check for single white space and does nothing
 			pass
 		else:
 			translation += dict_decrypt.get(x)
@@ -40,10 +42,12 @@ def decrypt():
 
 def main():
 	global txt
-	txt = input("Input morse code or text here: ")
-	if txt.startswith('.') or txt.startswith('-'):
+	txt = input("Input morsecode or text here: ")
+	if txt.startswith('.') or txt.startswith('-'):	#checks if the input is a morsecode
 		decrypt()
-	else:
+	elif txt == "exit":		#type "exit" to return to command line
+		exit()
+	else:					#if it is a plaintext input
 		txt = txt.lower()
 		encrypt()
 	return main()
